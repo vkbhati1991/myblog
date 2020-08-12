@@ -1,0 +1,22 @@
+.app-menu{
+    margin-left: 2rem;
+}
+
+.header-search-input{
+    input{
+        outline: none;
+    }
+}
+
+.subscribelink{
+    margin-left: 2rem;
+}
+
+@media screen and (max-width: 767px) {
+    .subscribelink{
+        margin-left: 1rem;
+    }
+    .app-menu{
+        margin-left: 1rem;
+    }
+  }

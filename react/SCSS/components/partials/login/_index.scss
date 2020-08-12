@@ -1,0 +1,100 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    min-height: 100vh;
+    font-family: $font-family-regular;
+    color: $primary;
+    line-height: 1;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul,
+li,
+ol {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+.login-row {
+    display: flex;
+}
+
+.login-img {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+    background: #FAFAFA;
+    height: 100vh;
+
+    .login-media {
+        width: 100%;
+    }
+}
+
+.login-form {
+    position: relative;
+    display: flex;
+    min-height: 500px;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+    width: 100%;
+}
+
+.login-contnet {
+    max-width: 340px;
+    text-align: left;
+}
+
+.login-title {
+    font-family: $font-family-bold;
+    color: #000;
+    font-size: 24px;
+    line-height: 30px;
+}
+
+.login-subtitle {
+    color: #888;
+    font-size: 15px;
+    line-height: 23px;
+    padding: 13px 0;
+}
+
+.login-form-row {
+    margin-bottom: 16px;
+    align-items: center;
+
+    .input-group>.form-control {
+        font-size: 14px;
+    }
+}
+
+.forgotpass {
+    margin-left: 12px;
+    font-size: 12px;
+    color: #000;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.login-invalid-alert {
+    right: 20px;
+    z-index: 20;
+    left: auto;
+    width: 57%;
+}

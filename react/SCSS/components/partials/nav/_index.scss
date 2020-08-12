@@ -1,0 +1,24 @@
+.app-nav {
+    top: 4rem;
+    background: #fbf5ed;
+    height: calc(100vh - 4rem);
+    .app-search{
+        display: block;
+        .header-search-field{
+            max-width: 20rem;
+            width: 100%;
+            input{
+                background-color: $white;
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 767px) {
+    .nav-item .grd-col-md-2 {
+        margin-bottom: 40px;
+    }
+    
+  }
+

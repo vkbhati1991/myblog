@@ -1,0 +1,10 @@
+//*************Global Fonts************** //
+
+@if ($load-web-fonts) {
+  @include font-face('light', 'light');
+  @include font-face('regular', 'regular');
+  @include font-face('medium', 'medium');
+  @include font-face('bold', 'bold');
+  @include font-face('thin', 'thin');
+  @include font-face('black', 'black');
+}

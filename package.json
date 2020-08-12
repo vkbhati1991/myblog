@@ -1,0 +1,28 @@
+{
+  "name": "myblog",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./bin/index.js",
+    "prod": "cross-env NODE_ENV=production node ./bin/index.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "~1.4.4",
+    "cross-env": "^7.0.2",
+    "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
+    "express": "~4.16.1",
+    "express-async-errors": "^3.1.1",
+    "express-hbs": "^2.3.4",
+    "hbs": "^4.1.1",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "mongoose": "^5.9.28",
+    "mongoose-mongodb-errors": "0.0.2",
+    "morgan": "~1.9.1",
+    "multer": "^1.4.2",
+    "nodemon": "^2.0.4",
+    "pug": "^3.0.0"
+  }
+}

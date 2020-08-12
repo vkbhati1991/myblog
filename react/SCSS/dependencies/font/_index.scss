@@ -1,0 +1,18 @@
+
+
+/// @require $static-font-path - See _config.scss where this setting is defined
+
+@mixin font-face($font-family-setting, $font-face-setting) {
+    
+    $font-path: '#{$static-font-path}/#{$font-face-setting}';
+  
+	@font-face {
+	  font-family: '#{$font-family-setting}';
+  
+	  src: url('#{$font-path}.woff') format('woff');
+	  src: url('#{$font-path}.otf') format('opentype');
+  
+	  font-style: normal;
+	  font-weight: normal;
+	}
+}
