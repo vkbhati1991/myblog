@@ -1,8 +1,15 @@
 const pageType = {
-    POST_LIST: 1,
-    POST_CREATE: 2,
-    POST_DETAIL: 3,
-    UPLOAD_IMAGE: 4
+    HOME: 1,
+    ABOUT: 2,
+    BLOG: 3,
+    TERM: 4,
+    PRIVACY: 5,
+    LOGIN: 6,
+    REGISTER: 7,
+    COMPONENT: 8,
+    COMPONENT_DETAIL: 9,
+    ADMIN_HOME: 20,
+    BLOG_DETAIL: 10
 };
 
 module.exports = pageType

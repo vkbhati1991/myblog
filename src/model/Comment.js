@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 
 const commentModel = {
-
+    userName: String,
+    imageUrl: String,
     content: {
         type: String,
         required: "Content is Required"
@@ -10,7 +11,14 @@ const commentModel = {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Post",
         required: "Post is Required Field"
-    }
+    },
+    replies:[
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Reply",
+            required: "Comment is Required Field"
+        }
+    ]
 }
 
 const comment_schema = new mongoose.Schema(commentModel, { timestamps: true });

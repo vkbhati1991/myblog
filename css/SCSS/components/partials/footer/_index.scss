@@ -1,0 +1,55 @@
+footer {
+    background-color: #202942;
+    position: relative;
+    color: #adb5bd;
+}
+
+.socialIcon a {
+    margin-right: 8px;
+    cursor: pointer;
+    &:hover{
+        background-color: $brand;
+        border-color: $brand;
+    }
+}
+
+.footer .text-foot {
+    color: #adb5bd;
+    &:hover {
+        color: #e6e8ea;
+    }
+}
+
+.subscribe-control {
+    height: 42px;
+    background-color: #27314f;
+    border: 1px solid #27314f;
+    color: #f8f9fc;
+    width: 100%;
+    padding-left: 3rem;
+}
+
+.feather-mail {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    z-index: 10;
+    left: 16px;
+    top: 13px;
+}
+
+.subscribe-control::placeholder{
+    color: #adb5bd;
+}
+
+.subscribe-control:focus{
+    border-color: #2f55d4 !important;
+}
+
+.footersubscribeBtn {
+    background: #23325f;
+    border-color: #2f55d4 !important;
+}
+.copyright {
+    border-color: #283353 !important;
+}

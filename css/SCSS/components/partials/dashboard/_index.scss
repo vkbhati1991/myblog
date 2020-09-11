@@ -1,0 +1,21 @@
+.progressbarfill {
+    left: 0;
+    top: 0;
+}
+
+.admin-nav{
+    min-height: 100vh;
+}
+
+.modal-right {
+    position: fixed;
+    width: 400px;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    border-left: 1px solid #ddd;
+    background: #fff;
+    z-index: 200;
+    overflow: auto;
+}

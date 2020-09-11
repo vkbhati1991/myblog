@@ -10,7 +10,7 @@ module.exports = multer({
         }
     }),
     fileFilter: (req, file, cb) => {
-        if (!file.mimetype.match(/jpe|jpeg|png|gif|JPEG|JPG|PNG$i/)) {
+        if (!file.mimetype.match(/jpe|svg|jpeg|png|gif|JPEG|JPG|PNG$i/)) {
             cb(new Error("File Not Supported"), false);
             return;
         }

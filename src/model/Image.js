@@ -6,7 +6,8 @@ const imageModel = {
     },
     imgUrl: {
         type: String
-    }
+    },
+    filename: String    
 }
 
 const image_schema = new mongoose.Schema(imageModel);

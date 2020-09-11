@@ -1,4 +1,4 @@
-import React from "React";
+import React from "react";
 import getComponent from "../components/pages";
 import AppHeader from "./AppHeader";
 

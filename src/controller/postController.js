@@ -18,11 +18,23 @@ router.get("/", async (req, res) => {
  */
 router.get("/:postId", async (req, res) => {
     const post = await postDal.getPost(req.params.postId);
-    const appModel = getAppModel(pageType.POST_DETAIL, { post: post });
+    const postComment = await postDal.getCommentsByPostId(req.params.postId);
+
+    const { comments } = postComment;
+
+    const tempCommentArray = [];
+    for (const comment of comments) {
+        const reply = await postDal.getReplyByCommentId(comment._id);
+        tempCommentArray.push(reply);
+    }
+
+    postComment.comments = tempCommentArray;
+
+    const appModel = getAppModel(pageType.POST_DETAIL, { post: post, postComment: postComment });
     res.render("index", { appModel });
 });
 
-router.get("/post/create_post", (req, res) => {
+router.get("/new/create_post", (req, res) => {
     const appModel = getAppModel(pageType.POST_CREATE, { post: null, edit: false });
     res.render("index", { appModel });
 });
@@ -72,6 +84,53 @@ router.delete("/:postId", async (req, res) => {
         message: "Record not Deleted"
     });
 
+});
+
+router.post("/:postId/comment", async (req, res) => {
+    const comment = await postDal.crateCommnetById(req.params.postId, req.body.content);
+
+    res.send(comment);
+});
+
+router.get("/:postId/comment", async (req, res) => {
+    const post = await postDal.getCommentsByPostId(req.params.postId);
+
+    res.send(post);
+});
+
+router.get("/comment/:commentId", async (req, res) => {
+    const comment = await postDal.getComment(req.params.commentId);
+    res.send(comment);
+});
+
+router.put("/comment/:commentId", async (req, res) => {
+
+    const comment = await postDal.commentUpdateById(req.params.commentId, req.body);
+    res.send(comment);
+});
+
+router.get("/comment/:commentId/reply", async (req, res) => {
+    const reply = await postDal.getReplyByCommentId(req.params.commentId);
+
+    res.send(reply);
+});
+
+router.get("/reply/:replyId", async (req, res) => {
+    const reply = await postDal.getReply(req.params.replyId);
+
+    res.send(reply);
+});
+
+router.put("/reply/:replyId", async (req, res) => {
+    const reply = await postDal.updateReply(req.params.replyId, req.body);
+
+    res.send(reply);
+});
+
+router.post("/comment/:commentId/reply", async (req, res) => {
+    const reply = await postDal.crateReplyById(req.params.commentId, req.body.content);
+
+    res.send(reply);
 });
 
 module.exports = router;
