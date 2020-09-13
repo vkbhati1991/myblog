@@ -5,7 +5,6 @@ import Comment from './Comment';
 import RelatedPost from './RelatedPost';
 import CommentForm from './CommentForm';
 import BlogSearch from './BlogSearch';
-import BlogCategory from './BlogCategory';
 import BlogRecent from './BlogRecent';
 import TagCloud from './TagCloud';
 import Follow from './Follow';
@@ -16,7 +15,7 @@ const BlogDetail = (props) => {
 
     if (!pageModel) return;
 
-    const { blog, blogList, recentPost, tags } = pageModel;
+    const { blog, blogList, recentPost, tags, comments } = pageModel;
 
     return (
         <div className="blog-deatil-content">
@@ -25,14 +24,13 @@ const BlogDetail = (props) => {
                 <div className="grd-row">
                     <div className="grd-col-8 pa-12">
                         <BlogLeft content={blog.content} />
-                        <Comment />
+                        <Comment comments={comments} />
                         <RelatedPost blogList={blogList} />
-                        <CommentForm />
+                        <CommentForm blog={blog} />
                     </div>
                     <div className="grd-col-4 pa-12">
                         <div className="comment-container f16 lh-copy ba b--light-gray pa-20 br10">
                             <BlogSearch />
-                            <BlogCategory />
                             <BlogRecent recentPost={recentPost} />
                             <TagCloud tags={tags} />
                             <Follow />

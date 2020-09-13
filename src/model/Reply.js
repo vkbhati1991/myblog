@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
 const replyModel = {
-    userName: String,
-    imageUrl: String,
-    content: {
+    name: String,
+    email: String,
+    message: {
         type: String,
         required: "Content is Required"
     },

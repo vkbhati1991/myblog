@@ -6,6 +6,9 @@ const blogModel = {
         required: "Field Required"
     },
     thumbImage: {
+        type: String
+    },
+    category: {
         type: String,
         required: "Field Required"
     },

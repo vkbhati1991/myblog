@@ -1241,6 +1241,16 @@ th {
   border: 1px solid #e77681;
   background: #fae3e5; }
 
+/* line 45, SCSS/components/partials/alert/_index.scss */
+.fixed-alert-at-top {
+  max-width: 440px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  z-index: 20;
+  padding: 18px; }
+
 /* line 2, SCSS/components/partials/input-group/_index.scss */
 .input-group {
   position: relative;

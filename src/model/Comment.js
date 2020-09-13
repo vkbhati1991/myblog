@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
 
 const commentModel = {
-    userName: String,
-    imageUrl: String,
-    content: {
+    name: String,
+    email: String,
+    message: {
         type: String,
         required: "Content is Required"
     },
-    post: {
+    blog: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Post",
+        ref: "Blog",
         required: "Post is Required Field"
     },
     replies:[

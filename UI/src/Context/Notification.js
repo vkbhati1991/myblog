@@ -20,7 +20,7 @@ const Notification = ({ children }) => {
                 setMessage(message);
             }
         }}>
-            {showAlert && (<div className={`alert alert--${messageType} mb3`}>
+            {showAlert && (<div className={`fixed-alert-at-top alert alert--${messageType} mb3`}>
                 <div className="alert__text">{message}</div>
             </div>)}
             {children}

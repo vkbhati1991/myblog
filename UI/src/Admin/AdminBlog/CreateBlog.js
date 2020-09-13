@@ -17,6 +17,7 @@ const CreateBlog = (props) => {
     let defaultTitle = null;
     let defaultCreatedBy = "Vinod Kumar";
     let defaultContent = null;
+    let defaultCategory = null;
 
     const { showAlert } = useContext(notificationContext);
 
@@ -25,18 +26,20 @@ const CreateBlog = (props) => {
 
     if (!pageModel) return;
 
-    const { blog, edit } = pageModel;
+    const { blog, edit, categoryList } = pageModel;
 
     if (blog) {
         defaultTitle = blog.title;
-        defaultCreatedBy = blog.createdBy,
+        defaultCreatedBy = blog.createdBy;
         defaultContent = blog.content;
+        defaultCategory = blog.category
     }
 
 
     const [title, setTitle] = useState(defaultTitle);
     const [thumbImage, setThumbImage] = useState(null);
     const [content, setContent] = useState(defaultContent);
+    const [category, setCategory] = useState(defaultCategory);
 
     const onSubmit = () => {
 
@@ -45,6 +48,7 @@ const CreateBlog = (props) => {
         formData.append('createdBy', defaultCreatedBy);
         formData.append('thumbImage', thumbImage);
         formData.append('content', content);
+        formData.append('category', category);
 
         const config = {
             headers: {
@@ -65,8 +69,12 @@ const CreateBlog = (props) => {
                 }
             });
         }
-        
+
     };
+
+    function onCategoryChange(evt) {
+        setCategory(evt.target.value);
+    }
 
     function onTitleChange(evt) {
         setTitle(evt.target.value);
@@ -78,6 +86,14 @@ const CreateBlog = (props) => {
 
     function onEditorChange(evt) {
         setContent(evt.editor.getData());
+    }
+
+    function getCategory() {
+        if (!categoryList || categoryList.length <= 0) return;
+
+        return categoryList.map((c, idx) => {
+            return <option key={idx} value={c.title}>{c.title}</option>
+        })
     }
 
     return (
@@ -92,6 +108,16 @@ const CreateBlog = (props) => {
                         <div className="pb-8 db" htmlFor="title">Title</div>
                         <div className="input-group">
                             <input onChange={onTitleChange} defaultValue={defaultTitle} type="text" name="title" className="form-control" id="title" />
+                        </div>
+                    </div>
+
+                    <div className="form-group mb-20">
+                        <div className="pb-8 db" htmlFor="title">Blog Category</div>
+                        <div className="input-group">
+                            <select onChange={onCategoryChange} defaultValue={defaultCategory} type="text" name="title" className="form-control" id="title" >
+                                <option>--select Category--</option>
+                                {getCategory()}
+                            </select>
                         </div>
                     </div>
 

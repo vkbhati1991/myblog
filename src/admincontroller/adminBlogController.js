@@ -4,9 +4,11 @@ const getAdminModel = require("../utils/indexAdmin");
 const mongoose = require("mongoose");
 require("../model/Blog");
 require("../model/Image");
+require("../model/Component");
 
 const Image = mongoose.model("Image");
 const Blog = mongoose.model("Blog");
+const Component = mongoose.model("Component");
 
 const upload = require("../dataAccessLayer/multer");
 const multipart = require('connect-multiparty');
@@ -25,14 +27,16 @@ router.get("/", async (req, res) => {
     res.render("index", { appModel });
 });
 
-router.get("/new", (req, res) => {
-    const appModel = getAdminModel(pageType.ADMIN_NEW, { blog: null, edit: false });
+router.get("/new", async (req, res) => {
+    const categoryList = await Component.find({}, { title: 1 });
+    const appModel = getAdminModel(pageType.ADMIN_NEW, { blog: null, categoryList: categoryList, edit: false });
     res.render("index", { appModel });
 });
 
-router.get("/edit/:blogId",  async (req, res) => {
+router.get("/edit/:blogId", async (req, res) => {
+    const categoryList = await Component.find({}, { title: 1 });
     const currentBlog = await Blog.findById({ _id: req.params.blogId });
-    const appModel = getAdminModel(pageType.ADMIN_NEW, { blog: currentBlog, edit: true });
+    const appModel = getAdminModel(pageType.ADMIN_NEW, { blog: currentBlog, categoryList: categoryList, edit: true });
     res.render("index", { appModel });
 });
 
@@ -42,6 +46,7 @@ router.post("/", upload.single("thumbImage"), async (req, res) => {
     blog.thumbImage = req.file && req.file.filename;
     blog.title = req.body.title;
     blog.createdBy = req.body.createdBy;
+    blog.category = req.body.category;
     blog.content = req.body.content;
     await blog.save();
 
@@ -54,10 +59,13 @@ router.post("/", upload.single("thumbImage"), async (req, res) => {
 
 router.put("/:blogId", upload.single("thumbImage"), async (req, res) => {
 
+    const currentBlog = await Blog.findById({ _id: req.params.blogId });
     const body = req.body;
-
-    body.thumbImage = req.file && req.file.filename;
-
+    if(req.file){
+        body.thumbImage = req.file && req.file.filename;
+    } else {
+        body.thumbImage = currentBlog.thumbImage;
+    }
     const blogToBeUpdated = await Blog.findByIdAndUpdate({ _id: req.params.blogId }, body, {
         new: true
     });
@@ -71,7 +79,7 @@ router.put("/:blogId", upload.single("thumbImage"), async (req, res) => {
     });
 });
 
-function getFileName(str){
+function getFileName(str) {
     return str.slice(15);
 }
 
