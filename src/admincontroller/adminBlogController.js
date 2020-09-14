@@ -2,6 +2,7 @@ const router = require("express").Router();
 const pageType = require("../constantAdmin");
 const getAdminModel = require("../utils/indexAdmin");
 const mongoose = require("mongoose");
+
 require("../model/Blog");
 require("../model/Image");
 require("../model/Component");
@@ -14,6 +15,8 @@ const upload = require("../dataAccessLayer/multer");
 const multipart = require('connect-multiparty');
 const multipartMiddleware = multipart({ uploadDir: './public/uploads/' });
 
+const isAuth = require("../middleware/is-auth");
+
 function getFileName(str) {
     return str.slice(15);
 }
@@ -21,19 +24,19 @@ function getFileName(str) {
 /**
  * Get Home Page
  */
-router.get("/", async (req, res) => {
+router.get("/", isAuth, async (req, res) => {
     const blogList = await Blog.find({});
     const appModel = getAdminModel(pageType.ADMIN_BLOG, { blogList: blogList });
     res.render("index", { appModel });
 });
 
-router.get("/new", async (req, res) => {
+router.get("/new", isAuth, async (req, res) => {
     const categoryList = await Component.find({}, { title: 1 });
     const appModel = getAdminModel(pageType.ADMIN_NEW, { blog: null, categoryList: categoryList, edit: false });
     res.render("index", { appModel });
 });
 
-router.get("/edit/:blogId", async (req, res) => {
+router.get("/edit/:blogId", isAuth, async (req, res) => {
     const categoryList = await Component.find({}, { title: 1 });
     const currentBlog = await Blog.findById({ _id: req.params.blogId });
     const appModel = getAdminModel(pageType.ADMIN_NEW, { blog: currentBlog, categoryList: categoryList, edit: true });
@@ -61,7 +64,7 @@ router.put("/:blogId", upload.single("thumbImage"), async (req, res) => {
 
     const currentBlog = await Blog.findById({ _id: req.params.blogId });
     const body = req.body;
-    if(req.file){
+    if (req.file) {
         body.thumbImage = req.file && req.file.filename;
     } else {
         body.thumbImage = currentBlog.thumbImage;
@@ -83,7 +86,7 @@ function getFileName(str) {
     return str.slice(15);
 }
 
-router.get("/browse/images", async (req, res) => {
+router.get("/browse/images", isAuth, async (req, res) => {
     const imageList = await Image.find({});
     const appModel = getAdminModel(pageType.ADMIN_BROWSE_IMAGE, { imageList: imageList });
     res.render("index", { appModel });

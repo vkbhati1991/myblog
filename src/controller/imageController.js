@@ -10,13 +10,13 @@ const multipartMiddleware = multipart({ uploadDir: './public/uploads/' });
 const Image = mongoose.model("Image");
 
 router.get("/upload", (req, res) => {
-    const appModel = getAppModel(pageType.UPLOAD_IMAGE);
+    const appModel = getAppModel(pageType.UPLOAD_IMAGE, null, false, req.session);
     res.render("index", { appModel });
 });
 
 router.get("/browse", async (req, res) => {
     const imageList = await Image.find({});
-    const appModel = getAppModel(pageType.BROWSE_IMAGE, { imageList: imageList });
+    const appModel = getAppModel(pageType.BROWSE_IMAGE, { imageList: imageList }, true, req.session);
     res.render("index", { appModel });
 });
 

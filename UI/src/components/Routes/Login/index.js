@@ -1,6 +1,29 @@
-import React from 'react';
+import React, { useContext } from 'react';
+/* eslint-disable */
+
+import { useForm } from "react-hook-form";
+import notificationContext from "../../../Context/NotificationContext";
+import axios from "axios";
+import API from "../../../../api";
+
 
 const Login = () => {
+
+    const { showAlert } = useContext(notificationContext);
+    const { handleSubmit, register, errors } = useForm();
+
+    const onSubmit = data => {
+        axios.post(`${API.URL}/login`, data).then((response) => {
+            if (response.data.status === 500) {
+                showAlert("danger tp-20 tc", response.data.message);
+            }
+            if(response.data.status === 200)
+            {
+                location.replace(`${API.URL}${response.data.redirect}`);
+            }
+        });
+    }
+
     return (
         <section className="signup-section flex items-center overflow-hidden">
             <a href="/" className="backToHome fixed ba b--brand mid br4 ht34 wt34">
@@ -14,9 +37,9 @@ const Login = () => {
                         <img src="./images/login.svg" />
                     </div>
                     <div className="grd-col-5">
-                        <form className="auth-card ba b--light-gray br6 pv-24 ph-12">
+                        <form onSubmit={handleSubmit(onSubmit)} className="auth-card ba b--light-gray br6 pv-24 ph-12">
                             <h4 className="mb-12 f24 ff-medium tc">Login</h4>
-                           
+
                             <div className="grd-row">
                                 <div className="grd-col-12 pa-12">
                                     <div className="auth-form-row">
@@ -27,8 +50,21 @@ const Login = () => {
                                                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                                                 <polyline points="22,6 12,13 2,6"></polyline>
                                             </svg>
-                                            <input type="text" className="form-control" placeholder="Email" />
+                                            <input
+                                                type="text"
+                                                className="form-control"
+                                                placeholder="Email"
+                                                name="email"
+                                                ref={register({
+                                                    required: "Email is Required",
+                                                    pattern: {
+                                                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                                        message: "Invalid Email"
+                                                    }
+                                                })}
+                                            />
                                         </div>
+                                        {errors.email && <div className="f12 red ff-medium pt-8">{errors.email.message}</div>}
                                     </div>
                                 </div>
 
@@ -43,7 +79,16 @@ const Login = () => {
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="auth-form-icon">
                                                 <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path>
                                             </svg>
-                                            <input type="password" autoComplete="false" className="form-control" placeholder="Password" />
+                                            <input
+                                                type="password"
+                                                autoComplete="false"
+                                                className="form-control"
+                                                placeholder="Password"
+                                                name="password"
+                                                ref={register({
+                                                    required: "Password is Required"
+                                                })}
+                                            />
                                         </div>
                                     </div>
                                 </div>
@@ -87,7 +132,7 @@ const Login = () => {
                                 </div>
                             </div>
                             <div className="mid pa-12 f14">
-                            Do not have an account ? <a className="f16 ff-medium brand ph-12" href="#/signup">Sign Up</a>
+                                Do not have an account ? <a className="f16 ff-medium brand ph-12" href="#/signup">Sign Up</a>
                             </div>
                         </form>
                     </div>

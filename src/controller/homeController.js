@@ -40,7 +40,7 @@ router.get("/", async (req, res) => {
 
     }
    
-    const appModel = await getAppModel(pageType.HOME, homeModel, false);
+    const appModel = await getAppModel(pageType.HOME, homeModel, false, req.session);
 
     res.render("index", { appModel });
 });

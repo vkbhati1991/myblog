@@ -12,12 +12,13 @@ const footer = {
     }
 }
 
-const getAppModel = async (pageType, pageModel, isHeaderFooter, extraProps) => {
+const getAppModel = async (pageType, pageModel, isHeaderFooter, session, extraProps) => {
     const appMetaData = {
         appHeader: {
             nav: {
                 component: await getNavList()
-            }
+            },
+            userInfo: session
         },
         appBody: {
             pageType,

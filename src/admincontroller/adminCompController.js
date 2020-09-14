@@ -7,10 +7,12 @@ const upload = require("../dataAccessLayer/multer");
 require("../model/Component");
 const Component = mongoose.model("Component");
 
+const isAuth = require("../middleware/is-auth");
+
 /**
  * Get Home Page
  */
-router.get("/", async (req, res) => {
+router.get("/", isAuth, async (req, res) => {
     const compList = await Component.find({});
     const appModel = getAdminModel(pageType.ADMIN_COMP, { compList: compList });
 
@@ -18,7 +20,7 @@ router.get("/", async (req, res) => {
 });
 
 
-router.get("/:compId", async (req, res) => {
+router.get("/:compId", isAuth, async (req, res) => {
     const comp = await Component.findById({ _id: req.params.compId });
     res.send(comp);
 });
@@ -67,7 +69,7 @@ router.put("/:compId", upload.single("compimage"), async (req, res) => {
 /**
  * Delete Record
  */
-router.delete("/:compId", async (req, res) => {
+router.delete("/:compId", isAuth, async (req, res) => {
     const compToBeDeleted = await Component.findByIdAndRemove({ _id: req.params.compId });
 
     if (compToBeDeleted) {

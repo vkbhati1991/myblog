@@ -21,7 +21,7 @@ function getCompList(list) {
  */
 router.get("/", async (req, res) => {
     const compList = await Component.find({});
-    const appModel = await getAppModel(pageType.COMPONENT, getCompList(compList));
+    const appModel = await getAppModel(pageType.COMPONENT, getCompList(compList), false, req.session);
     res.render("index", { appModel });
 });
 
@@ -33,7 +33,7 @@ router.get("/:compId", async (req, res) => {
         cataegory: [],
         tag: []
     }
-    const appModel = await getAppModel(pageType.COMPONENT_DETAIL, compObj);
+    const appModel = await getAppModel(pageType.COMPONENT_DETAIL, compObj, false, req.session);
     res.render("index", { appModel });
 });
 

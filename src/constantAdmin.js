@@ -4,7 +4,8 @@ const pageType = {
     ADMIN_BLOG: 3,
     ADMIN_BLOG_DETAIL: 4,
     ADMIN_NEW: 5,
-    ADMIN_BROWSE_IMAGE: 6
+    ADMIN_BROWSE_IMAGE: 6,
+    ADMIN_SUBSCRIBE: 7
 };
 
 module.exports = pageType

@@ -1,4 +1,5 @@
 import React from 'react';
+import SubscribeForm from './SubscribeForm';
 
 const Footer = (props) => {
     return (
@@ -39,16 +40,16 @@ const Footer = (props) => {
                     <div className="grd-col-md-2 ph-12">
                         <div className="footerbox">
                             <div className="footer-title f20 ff-medium near-white pb-20">Company</div>
-                            <a href="#/about" className="flex items-center mb-16 text-foot">
+                            <a href="/about" className="flex items-center mb-16 text-foot">
                                 <span className="material-icons-outlined f16"> keyboard_arrow_right</span>
                                 <span className="ph-8 f16">About Us</span>
                             </a>
 
-                            <a href="#/blog" className="flex items-center mb-16 text-foot">
+                            <a href="/blog" className="flex items-center mb-16 text-foot">
                                 <span className="material-icons-outlined f16"> keyboard_arrow_right</span>
                                 <span className="ph-8 f16">Blog</span>
                             </a>
-                            <a href="#/" className="flex items-center mb-16 text-foot">
+                            <a href="/login" className="flex items-center mb-16 text-foot">
                                 <span className="material-icons-outlined f16"> keyboard_arrow_right</span>
                                 <span className="ph-8 f16">Login</span>
                             </a>
@@ -57,34 +58,27 @@ const Footer = (props) => {
                     <div className="grd-col-md-3 ph-12">
                         <div className="footerbox">
                             <div className="footer-title f20 ff-medium near-white pb-20">Usefull Links</div>
-                            <a href="#/term" className="flex items-center mb-16 text-foot">
+                            <a href="/term" className="flex items-center mb-16 text-foot">
                                 <span className="material-icons-outlined f16"> keyboard_arrow_right</span>
                                 <span className="ph-8 f16"> Terms of Services</span>
                             </a>
-                            <a href="#/policy" className="flex items-center mb-16 text-foot">
+                            <a href="/policy" className="flex items-center mb-16 text-foot">
                                 <span className="material-icons-outlined f16"> keyboard_arrow_right</span>
                                 <span className="ph-8 f16"> Privacy Policy</span>
                             </a>
 
-                            <a href="#/comp" className="flex items-center mb-16 text-foot">
+                            <a href="/comp" className="flex items-center mb-16 text-foot">
                                 <span className="material-icons-outlined f16"> keyboard_arrow_right</span>
                                 <span className="ph-8 f16"> Components</span>
                             </a>
                         </div>
                     </div>
-                    <div className="grd-col-md-3 ph-12">
+                    <div className="grd-col-md-3 ph-12" id="newslatter">
                         <div className="footerbox">
                             <div className="footer-title f20 ff-medium near-white">Newsletter</div>
                             <div className="lh-copy f16 mt-20">Sign up and receive the latest tips via email.</div>
                         </div>
-                        <div className="subscribe-form">
-                            <label className="db mt-20 mb-12 ff-bold f14">Write your email</label>
-                            <div className="subscribe-form-control relative">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-mail fea icon-sm icons"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                                <input type="text" className="subscribe-control br6 f14 trans-3" placeholder="Your Email:" />
-                            </div>
-                            <button className="button button--brand mt-20 wt--100 tc footersubscribeBtn mid ff-medium f16 pv-10 h-auto">Subscribe</button>
-                        </div>
+                        <SubscribeForm />
                     </div>
                 </div>
             </div>

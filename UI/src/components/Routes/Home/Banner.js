@@ -1,6 +1,14 @@
 import React from 'react';
 import CDN from '../../../../cdn';
 
+function slideTo() {
+    //const element = document.getElementById('newslatter');
+    document.body.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: 'smooth'
+    });
+}
+
 const Banner = (props) => {
     return (
         <div className="section pv-60">
@@ -11,7 +19,7 @@ const Banner = (props) => {
                     <p className="f18 secondary lh-copy mb-32 ">{props.desc}</p>
                     <div className="flex items-center">
                         <a href="/blog" className="button button--brand ttc ff-medium f15  h-auto pv-12 ph-16 wt-10 mid">Get Started</a>
-                        <a className="button button--outline-brand ttc ff-medium mh-16 f15 h-auto pv-12 ph-16 wt-10 mid">Subscribe Now</a>
+                        <a onClick={slideTo} className="button button--outline-brand ttc ff-medium mh-16 f15 h-auto pv-12 ph-16 wt-10 mid">Subscribe Now</a>
                     </div>
                 </div>
                 <div className="grd-col-5">

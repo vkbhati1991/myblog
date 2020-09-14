@@ -6,7 +6,7 @@ const getAppModel = require("../utils");
  * Get Home Page
  */
 router.get("/", async (req, res) => {
-    const appModel =await  getAppModel(pageType.PRIVACY);
+    const appModel =await  getAppModel(pageType.PRIVACY, null, false, req.session);
     res.render("index", { appModel });
 });
 

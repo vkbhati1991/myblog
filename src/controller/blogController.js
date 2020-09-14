@@ -18,7 +18,7 @@ const Reply = mongoose.model("Reply");
  */
 router.get("/", async (req, res) => {
     const blogList = await Blog.find({});
-    const appModel = await getAppModel(pageType.BLOG, { blogList: blogList });
+    const appModel = await getAppModel(pageType.BLOG, { blogList: blogList }, false, req.session);
     res.render("index", { appModel });
 });
 
@@ -47,7 +47,7 @@ router.get("/:blogId", async (req, res) => {
         comments: blogComments.comments
     }
 
-    const appModel = await getAppModel(pageType.BLOG_DETAIL, blogDetail);
+    const appModel = await getAppModel(pageType.BLOG_DETAIL, blogDetail, false, req.session);
     res.render("index", { appModel });
 });
 
