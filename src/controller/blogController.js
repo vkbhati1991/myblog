@@ -24,11 +24,17 @@ router.get("/", async (req, res) => {
 
 router.get("/:blogId", async (req, res) => {
     const blog = await Blog.findById({ _id: req.params.blogId });
-    const blogList = await Blog.find({}).limit(2);
-    const recentPost = await Blog.find({}).limit(3);
+    const blogList = await Blog.find({});
     const tags = await Component.find({}, { title: 1 });
     const blogComments = await Blog.findById({ _id: req.params.blogId }).populate("comments");
 
+    const blogListArray = [];
+    blogListArray.push(blogList[blogList.length - 1]);
+    blogListArray.push(blogList[blogList.length - 2]);
+    blogListArray.push(blogList[blogList.length - 3]);
+
+    const relatedBlogList = blogList.filter(el => el.category === blog.category);
+    
     const { comments } = blogComments;
 
     const tempCommentArray = [];
@@ -41,10 +47,12 @@ router.get("/:blogId", async (req, res) => {
 
     const blogDetail = {
         blog: blog,
-        blogList: blogList,
-        recentPost: recentPost,
+        blogList: relatedBlogList,
+        recentPost: blogListArray,
         tags: tags,
-        comments: blogComments.comments
+        comments: blogComments.comments,
+        session: req.session,
+        searchList: blogList,
     }
 
     const appModel = await getAppModel(pageType.BLOG_DETAIL, blogDetail, false, req.session);

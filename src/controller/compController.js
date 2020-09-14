@@ -5,7 +5,9 @@ const getAppModel = require("../utils");
 const upload = require("../dataAccessLayer/multer");
 
 require("../model/Component");
+require("../model/Blog");
 const Component = mongoose.model("Component");
+const Blog = mongoose.model("Blog");
 
 function getCompList(list) {
     return {
@@ -27,11 +29,14 @@ router.get("/", async (req, res) => {
 
 router.get("/:compId", async (req, res) => {
     const comp = await Component.findById({ _id: req.params.compId });
+    const compList = await Blog.find({});
+    const compListArray = compList.filter(el => el.category === comp.title);
+    const tags = await Component.find({}, { title: 1 });
+
     const compObj = {
         component: comp,
-        componentTut: [],
-        cataegory: [],
-        tag: []
+        componentList: compListArray,
+        tags: tags
     }
     const appModel = await getAppModel(pageType.COMPONENT_DETAIL, compObj, false, req.session);
     res.render("index", { appModel });

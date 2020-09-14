@@ -177,3 +177,16 @@ img {
     }
 }
 
+.drop-down-active {
+    position: fixed;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    z-index: 100;
+}
+
+.searchBlogBox {
+    max-width: 600px;
+    display: block;
+    margin: 0 auto;
+}

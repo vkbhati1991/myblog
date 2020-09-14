@@ -19,7 +19,7 @@ const CommentItem = (props) => {
     const { showAlert } = useContext(notificationContext);
     const [isEdit, setIsEdit] = useState(false);
     const [isReply, setReply] = useState(false);
-    const { c } = props;
+    const { c, session } = props;
 
     if (isEdit) {
         return <CommentForm comment={c} setIsEdit={setIsEdit} isEdit />;
@@ -47,8 +47,8 @@ const CommentItem = (props) => {
                         </div>
                     </div>
                     <div className="flex items-center">
-                        <a onClick={() => { setIsEdit(true); }} className="replybtn pointer primary">Edit</a>
-                        <a onClick={() => { onDelete(c._id); }} className="replybtn pointer primary mh-12">Delete</a>
+                        {session.isLoggedIn && <a onClick={() => { setIsEdit(true); }} className="replybtn pointer primary">Edit</a>}
+                        {session.isLoggedIn && <a onClick={() => { onDelete(c._id); }} className="replybtn pointer primary mh-12">Delete</a>}
                         <a onClick={() => { setReply(true); }} className="replybtn pointer primary">Reply</a>
                     </div>
                 </div>

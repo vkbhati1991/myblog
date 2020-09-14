@@ -2571,6 +2571,20 @@ img {
   .socialLink:hover {
     color: #fff; }
 
+/* line 180, SCSS/components/partials/custom/_index.scss */
+.drop-down-active {
+  position: fixed;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  z-index: 100; }
+
+/* line 188, SCSS/components/partials/custom/_index.scss */
+.searchBlogBox {
+  max-width: 600px;
+  display: block;
+  margin: 0 auto; }
+
 /* line 1, SCSS/components/partials/footer/_index.scss */
 footer {
   background-color: #202942;

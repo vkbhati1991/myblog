@@ -31,8 +31,7 @@ app.use(express.static(publicPath));
 app.use(session({
   secret: 'vinodsinghtheuisolution',
   resave: false,
-  saveUninitialized: true,
-  cookie  : { maxAge  : new Date(Date.now() + (60 * 1000 * 30)) }
+  saveUninitialized: true
 }))
 
 const homeController = require("./controller/homeController");

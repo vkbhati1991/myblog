@@ -15,7 +15,7 @@ const BlogDetail = (props) => {
 
     if (!pageModel) return;
 
-    const { blog, blogList, recentPost, tags, comments } = pageModel;
+    const { blog, blogList, recentPost, tags, comments, session, searchList } = pageModel;
 
     return (
         <div className="blog-deatil-content">
@@ -24,13 +24,13 @@ const BlogDetail = (props) => {
                 <div className="grd-row">
                     <div className="grd-col-8 pa-12">
                         <BlogLeft content={blog.content} />
-                        <Comment comments={comments} />
+                        <Comment comments={comments} session={session} />
                         <RelatedPost blogList={blogList} />
                         <CommentForm blog={blog} />
                     </div>
                     <div className="grd-col-4 pa-12">
                         <div className="comment-container f16 lh-copy ba b--light-gray pa-20 br10">
-                            <BlogSearch />
+                            <BlogSearch searchList={searchList} />
                             <BlogRecent recentPost={recentPost} />
                             <TagCloud tags={tags} />
                             <Follow />

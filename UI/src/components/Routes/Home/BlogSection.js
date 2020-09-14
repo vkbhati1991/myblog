@@ -13,7 +13,7 @@ const blogListing = (props) => {
         return (
             <div className="grd-col-md-4 pa-12" key={idx}>
                 <div className="blog-card br10 bg-white wt--100 trans-3 ba b--moon-gray">
-                    <div className="blog-card-img br10 overflow-hidden"><img src={`${API.URL}/uploads/${blog.thumbImage}`} /></div>
+                    <a href={`/blog/${blog._id}`} className="blog-card-img br10 overflow-hidden"><span className="db">blog</span><img src={`${API.URL}/uploads/${blog.thumbImage}`} /></a>
                     <div className="blog-card-content pa-24">
                         <a href={`/blog/${blog._id}`} className="blog-card-title ff-medium f20 pointer db lh-title primary">{blog.title}</a>
                         <div className="blog-card-author flex items-center secondary mt-12">

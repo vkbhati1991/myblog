@@ -48,6 +48,9 @@ router.post("/", async (req, res) => {
     if ((req.body.email === user.email) && (req.body.password === decryptpassword)) {
         req.session.isLoggedIn = true;
         req.session.user = userinfo;
+        const hour = 3600000
+        req.session.cookie.expires = new Date(Date.now() + hour)
+        req.session.cookie.maxAge = 100 * hour
         res.send({
             status: 200,
             redirect: "/admin/blog"

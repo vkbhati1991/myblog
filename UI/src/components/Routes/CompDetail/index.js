@@ -1,28 +1,45 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import BlogCategory from '../BlogDetail/BlogCategory';
 import TagCloud from '../BlogDetail/TagCloud';
 import Follow from '../BlogDetail/Follow';
+import API from '../../../../api';
 
 const CompDetail = (props) => {
+
+  const [activeTab, setActiveTab] = useState(0);
+  const [activeTabData, setActiveTabData] = useState(null);
+  const { pageModel } = props;
+  const { componentList, tags } = pageModel;
+
+  useEffect(() => {
+    if (componentList && componentList.length > 0) {
+      const data = componentList[activeTab];
+      setActiveTabData(data);
+
+    }
+  }, [activeTab]);
+
+  if (!activeTabData) return null;
+
   return (
     <div className="comp-detail bt b--light-gray">
       <div className="grd-row comp-detail-row">
-        <div className="grd-col-2 comp-detail-row__side-nav pb-40 ">{compDetailLeft(props)}</div>
+        <div className="grd-col-2 comp-detail-row__side-nav pb-40 ">{compDetailLeft(props, activeTab, setActiveTab)}</div>
         <div className="grd-col-8 comp-detail-row__code bl br b--light-gray pa-12">
           <div className="comp-detail-code pa-12">
             <div className="mainborad">
-              <img src="./images/add.png" />
+              <img src={`${API.URL}/images/add.png`} />
             </div>
-            <h1>How to setup React CLI from scratch</h1>
+            <h1>{activeTabData.title}</h1>
             <div className="main-code-area lh-copy f16">
-              {`${1} The most well-known dummy text is the 'Lorem Ipsum', which is said to have originated in the 16th century. Lorem Ipsum is composed in a pseudo-Latin language which more or less corresponds to 'proper' Latin. It contains a series of real Latin words. This ancient dummy text is also incomprehensible, but it imitates the rhythm of most European languages in Latin script. " There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. " The advantage of its Latin origin and the relative meaninglessness of Lorum Ipsum is that the text does not attract attention to itself or distract the viewer's attention from the layout.`}
+              <div dangerouslySetInnerHTML={{ __html: activeTabData.content }} />
             </div>
           </div>
         </div>
         <div className="grd-col-2 comp-detail-row__add ph-12 pv-24">
-          <div className="mainBoard-vert"><img src="./images/v-add.png" /></div>
+          <div className="mainBoard-vert"><img src={`${API.URL}/images/v-add.png`} /></div>
           <BlogCategory />
-          <TagCloud />
+          <TagCloud tags={tags}/>
           <Follow />
         </div>
 
@@ -31,28 +48,35 @@ const CompDetail = (props) => {
   );
 };
 
-const compDetailLeft = (props) => {
+const compDetailLeft = (props, activeTab, setActiveTab) => {
 
   const { pageModel } = props;
-  const { component } = pageModel;
+  const { component, componentList } = pageModel;
 
   return (
     <div className="comp-detail-tech-group ">
       <h2 className="comp-detail-tech ph-16 pt-24 pb-12 f20 ff-bold">{component.title}</h2>
-      <a href="/#" className="comp-detail-tech-link db mt-16 ph-16 f16 ff-medium lh-title primary">How to setup React CLI from scratch</a>
-      <a href="/#" className="comp-detail-tech-link db mt-16 ph-16 f16 ff-medium lh-title primary">How to setup REST API in NODE and EXPRESS JS from scratch</a>
-      <a href="/#" className="comp-detail-tech-link db mt-16 ph-16 f16 ff-bold brand lh-title">How to Create Responsive Grid from scratch</a>
-      <a href="/#" className="comp-detail-tech-link db mt-16 ph-16 f16 ff-medium lh-title primary">How to setup React CLI from scratch</a>
-      <a href="/#" className="comp-detail-tech-link db mt-16 ph-16 f16 ff-medium lh-title primary">How to setup REST API in NODE and EXPRESS JS from scratch</a>
-      <a href="/#" className="comp-detail-tech-link db mt-16 ph-16 f16 ff-medium lh-title primary">How to Create Responsive Grid from scratch</a>
-      <a href="/#" className="comp-detail-tech-link db mt-16 ph-16 f16 ff-medium lh-title primary">How to setup React CLI from scratch</a>
-      <a href="/#" className="comp-detail-tech-link db mt-16 ph-16 f16 ff-medium lh-title primary">How to setup REST API in NODE and EXPRESS JS from scratch</a>
-      <a href="/#" className="comp-detail-tech-link db mt-16 ph-16 f16 ff-medium lh-title primary">How to Create Responsive Grid from scratch</a>
-      <a href="/#" className="comp-detail-tech-link db mt-16 ph-16 f16 ff-medium lh-title primary">How to setup React CLI from scratch</a>
-      <a href="/#" className="comp-detail-tech-link db mt-16 ph-16 f16 ff-medium lh-title primary">How to setup REST API in NODE and EXPRESS JS from scratch</a>
-      <a href="/#" className="comp-detail-tech-link db mt-16 ph-16 f16 ff-medium lh-title primary">How to Create Responsive Grid from scratch</a>
+      {getComponentList(componentList, activeTab, setActiveTab)}
     </div>
   );
+};
+
+const getComponentList = (componentArray, activeTab, setActiveTab) => {
+  if (!componentArray || componentArray.length <= 0) return;
+
+  return componentArray.map((c, i) => {
+
+    const classvalue = 'comp-detail-tech-link pointer db mt-16 ph-16 f16 ff-medium lh-title primary';
+    const isActiveclassvalue = 'comp-detail-tech-link pointer db mt-16 ph-16 f16 ff-bold lh-title brand';
+    const applyClass = activeTab === i ? isActiveclassvalue : classvalue;
+
+    return (
+
+      <a key={i} className={applyClass} onClick={() => { setActiveTab(i); }}>
+        {c.title}
+      </a>
+    );
+  });
 };
 
 export default CompDetail;
