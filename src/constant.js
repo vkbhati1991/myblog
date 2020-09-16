@@ -9,7 +9,8 @@ const pageType = {
     COMPONENT: 8,
     COMPONENT_DETAIL: 9,
     ADMIN_HOME: 20,
-    BLOG_DETAIL: 10
+    BLOG_DETAIL: 10,
+    CONTACT: 11
 };
 
 module.exports = pageType

@@ -8,7 +8,7 @@ const getNavList = async () => {
 
 const footer = {
     about: {
-        desc: "Start working with Landrick that can provide everything you need to generate awareness, drive traffic, connect."
+        desc: "The uiSolution is one of the best platform for the ‘UI developers or Client side developers’.  "
     }
 }
 

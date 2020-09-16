@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
         banner: {
             head: "Our Creative Work is Your",
             head2: "Success",
-            desc: "Launch your campaign and benefit from our expertise on designing and managing conversion centered bootstrap4 html page."
+            desc: "The uiSolution is one of the best platform for the ‘UI developers or Client side developers’. We help you to provide the variety of solutions related to UI/UX like React, ES6, Javascript, Vue js, Angular js, Webapck, HTML, CSS, SCSS...etc..."
 
         },
         comp: {
@@ -34,7 +34,7 @@ router.get("/", async (req, res) => {
         },
         blog: {
             head: "Learn Our Latest Component & Blog",
-            desc: "Here You can get developed component and use in the application by clicking the below options according to your app requirement.",
+            desc: "The uiSolution is one of the best platform for the ‘UI developers or Client side developers’. We help you to provide the variety of solutions related to UI/UX like React, ES6, Javascript, Vue js, Angular js, Webapck, HTML, CSS, SCSS...etc...",
             blogList: blogList
         }
 

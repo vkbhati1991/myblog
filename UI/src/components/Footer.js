@@ -1,7 +1,7 @@
 import React from 'react';
 import SubscribeForm from './SubscribeForm';
 
-const Footer = (props) => {
+const Footer = () => {
     return (
         <footer className="footer">
             <div className="ui-container pv-60">
@@ -9,7 +9,8 @@ const Footer = (props) => {
                     <div className="grd-col-md-4 ph-12">
                         <div className="footerbox">
                             <div className="footer-title f20 ff-medium near-white">About Us</div>
-                            <div className="footer-aboutus lh-copy f16 mt-20">{props.about.desc}
+                            <div className="footer-aboutus lh-copy f16 mt-20">
+                            <p><span className="ff-bold">The uiSolution</span> is one of the best platform for the <span>‘UI developers or Client side developers’</span>. We help you to provide the variety of solutions related to UI/UX <span >(React, ES6, Javascript, Vue js, Angular js, Webapck, HTML, CSS, SCSS...etc...)</span>.</p>
                             </div>
                             <div className="socialIcon flex mt-20">
                                 <a className="ht34 wt34 socialLink br4 ba mid f20 trans-3">
@@ -58,19 +59,24 @@ const Footer = (props) => {
                     <div className="grd-col-md-3 ph-12">
                         <div className="footerbox">
                             <div className="footer-title f20 ff-medium near-white pb-20">Usefull Links</div>
-                            <a href="/term" className="flex items-center mb-16 text-foot">
+                            <a href="/contact" className="flex items-center mb-16 text-foot">
                                 <span className="material-icons-outlined f16"> keyboard_arrow_right</span>
-                                <span className="ph-8 f16"> Terms of Services</span>
-                            </a>
-                            <a href="/policy" className="flex items-center mb-16 text-foot">
-                                <span className="material-icons-outlined f16"> keyboard_arrow_right</span>
-                                <span className="ph-8 f16"> Privacy Policy</span>
+                                <span className="ph-8 f16"> Contact us</span>
                             </a>
 
                             <a href="/comp" className="flex items-center mb-16 text-foot">
                                 <span className="material-icons-outlined f16"> keyboard_arrow_right</span>
                                 <span className="ph-8 f16"> Components</span>
                             </a>
+                            <a href="/" className="flex items-center mb-16 text-foot">
+                                <span className="material-icons-outlined f16"> keyboard_arrow_right</span>
+                                <span className="ph-8 f16"> Terms of Services</span>
+                            </a>
+                            <a href="/" className="flex items-center mb-16 text-foot">
+                                <span className="material-icons-outlined f16"> keyboard_arrow_right</span>
+                                <span className="ph-8 f16"> Privacy Policy</span>
+                            </a>
+                            
                         </div>
                     </div>
                     <div className="grd-col-md-3 ph-12" id="newslatter">

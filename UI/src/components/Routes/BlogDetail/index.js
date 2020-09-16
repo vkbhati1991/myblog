@@ -20,7 +20,7 @@ const BlogDetail = (props) => {
     return (
         <div className="blog-deatil-content">
             <BlogDetailBanner createdAt={blog.createdAt} createdBy={blog.createdBy} title={blog.title} />
-            <div className="ui-container pv-40">
+            <div className="ui-container pv-40" style={{ maxWidth: 1300 }}>
                 <div className="grd-row">
                     <div className="grd-col-8 pa-12">
                         <BlogLeft content={blog.content} />

@@ -43,6 +43,7 @@ const loginController = require("./controller/loginController");
 //const signupController = require("./controller/signupController");
 const compController = require("./controller/compController");
 const subscribeController = require("./controller/subscribeController");
+const contactController = require("./controller/contactController");
 
 /**
  * Routes MiddleWare
@@ -56,6 +57,7 @@ app.use("/comp", compController);
 app.use("/login", loginController);
 //app.use("/register", signupController);
 app.use("/subscribe", subscribeController);
+app.use("/contact", contactController);
 
 //Admin Riutes
 
@@ -64,6 +66,7 @@ const adminCompController = require("./admincontroller/adminCompController");
 const adminBlogController = require("./admincontroller/adminBlogController");
 const adminImageController = require("./admincontroller/adminImageController");
 const adminSubscribeController = require("./admincontroller/adminSubscribeController");
+const adminContactController = require("./admincontroller/adminContactController");
 
 // const postController = require("./controller/postController");
 // const imageController = require("./controller/imageController");
@@ -76,6 +79,7 @@ app.use("/admin/comp", adminCompController);
 app.use("/admin/blog", adminBlogController);
 app.use("/admin/image", adminImageController);
 app.use("/admin/subscribe", adminSubscribeController);
+app.use("/admin/contact", adminContactController);
 
 // app.use("/setup/comp", postController);
 // app.use("/setup/image", imageController);

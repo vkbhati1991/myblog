@@ -30,6 +30,13 @@ const AdminNav = () => {
                     </a>
                 </li>
 
+                <li className="admin-list mb-20">
+                    <a href="/admin/contact" className="flex items-center white">
+                        <span className="admin-nav-icon material-icons-outlined">article</span>
+                        <span className="admin-nav-text ph-12">Contact us</span>
+                    </a>
+                </li>
+
             </ul>
         </div>
     );

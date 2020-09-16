@@ -6,6 +6,7 @@ import AdminBlog from './AdminBlog';
 import CreateBlog from './AdminBlog/CreateBlog';
 import BrowseImage from './AdminBlog/BrowseImage';
 import AdminSubscribe from './AdminSubscribe';
+import AdminContact from './AdminContact';
 
 const getAdminComponent = (props) => {
     switch (props.pageType) {
@@ -21,6 +22,8 @@ const getAdminComponent = (props) => {
             return <BrowseImage {...props} />;
         case pageTypes.ADMIN_SUBSCRIBE:
             return <AdminSubscribe {...props} />;
+        case pageTypes.ADMIN_CONTACT:
+            return <AdminContact {...props} />;
         default:
             return <AdminHome {...props} />;
     }

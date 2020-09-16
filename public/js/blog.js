@@ -55647,8 +55647,48 @@ var pageTypes = {
   ADMIN_BLOG_DETAIL: 4,
   ADMIN_NEW: 5,
   ADMIN_BROWSE_IMAGE: 6,
-  ADMIN_SUBSCRIBE: 7
+  ADMIN_SUBSCRIBE: 7,
+  ADMIN_CONTACT: 8
 };
+
+/***/ }),
+
+/***/ "./src/Admin/AdminContact/index.js":
+/*!*****************************************!*\
+  !*** ./src/Admin/AdminContact/index.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var getList = function getList(props) {
+  var pageModel = props.pageModel;
+  if (!pageModel) return;
+  var contactList = pageModel.contactList;
+  if (!contactList || contactList.length <= 0) return;
+  return contactList.map(function (e, i) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      key: i
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, e.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, e.email), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, e.message));
+  });
+};
+
+var AdminContact = function AdminContact(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "admin-com-list-header flex items-center ph-16 mb-20"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "admin-comp-list-title flex-1 f20 ff-bold"
+  }, "Contact List")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "ba b--light-gray"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "email"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "message"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, getList(props)))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (AdminContact);
 
 /***/ }),
 
@@ -55812,7 +55852,16 @@ var AdminNav = function AdminNav() {
     className: "admin-nav-icon material-icons-outlined"
   }, "article"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "admin-nav-text ph-12"
-  }, "Users")))));
+  }, "Users"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: "admin-list mb-20"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "/admin/contact",
+    className: "flex items-center white"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "admin-nav-icon material-icons-outlined"
+  }, "article"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "admin-nav-text ph-12"
+  }, "Contact us")))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (AdminNav);
@@ -55835,7 +55884,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AdminBlog_CreateBlog__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AdminBlog/CreateBlog */ "./src/Admin/AdminBlog/CreateBlog.js");
 /* harmony import */ var _AdminBlog_BrowseImage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./AdminBlog/BrowseImage */ "./src/Admin/AdminBlog/BrowseImage.js");
 /* harmony import */ var _AdminSubscribe__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./AdminSubscribe */ "./src/Admin/AdminSubscribe/index.js");
+/* harmony import */ var _AdminContact__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./AdminContact */ "./src/Admin/AdminContact/index.js");
 /* eslint-disable*/
+
 
 
 
@@ -55863,6 +55914,9 @@ var getAdminComponent = function getAdminComponent(props) {
 
     case _AdminConstant__WEBPACK_IMPORTED_MODULE_1__["pageTypes"].ADMIN_SUBSCRIBE:
       return /*#__PURE__*/React.createElement(_AdminSubscribe__WEBPACK_IMPORTED_MODULE_6__["default"], props);
+
+    case _AdminConstant__WEBPACK_IMPORTED_MODULE_1__["pageTypes"].ADMIN_CONTACT:
+      return /*#__PURE__*/React.createElement(_AdminContact__WEBPACK_IMPORTED_MODULE_7__["default"], props);
 
     default:
       return /*#__PURE__*/React.createElement(_AdminHome_index__WEBPACK_IMPORTED_MODULE_0__["default"], props);
@@ -56720,7 +56774,8 @@ var pageTypes = {
   REGISTER: 7,
   COMPONENT: 8,
   COMPONENT_DETAIL: 9,
-  BLOG_DETAIL: 10
+  BLOG_DETAIL: 10,
+  CONTACT: 11
 };
 
 /***/ }),
@@ -56740,7 +56795,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var Footer = function Footer(props) {
+var Footer = function Footer() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
     className: "footer"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -56755,7 +56810,9 @@ var Footer = function Footer(props) {
     className: "footer-title f20 ff-medium near-white"
   }, "About Us"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "footer-aboutus lh-copy f16 mt-20"
-  }, props.about.desc), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "ff-bold"
+  }, "The uiSolution"), " is one of the best platform for the ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "\u2018UI developers or Client side developers\u2019"), ". We help you to provide the variety of solutions related to UI/UX ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "(React, ES6, Javascript, Vue js, Angular js, Webapck, HTML, CSS, SCSS...etc...)"), ".")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "socialIcon flex mt-20"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "ht34 wt34 socialLink br4 ba mid f20 trans-3"
@@ -56872,27 +56929,34 @@ var Footer = function Footer(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "footer-title f20 ff-medium near-white pb-20"
   }, "Usefull Links"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "/term",
+    href: "/contact",
     className: "flex items-center mb-16 text-foot"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "material-icons-outlined f16"
   }, " keyboard_arrow_right"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "ph-8 f16"
-  }, " Terms of Services")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "/policy",
-    className: "flex items-center mb-16 text-foot"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "material-icons-outlined f16"
-  }, " keyboard_arrow_right"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "ph-8 f16"
-  }, " Privacy Policy")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+  }, " Contact us")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "/comp",
     className: "flex items-center mb-16 text-foot"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "material-icons-outlined f16"
   }, " keyboard_arrow_right"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "ph-8 f16"
-  }, " Components")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, " Components")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "/",
+    className: "flex items-center mb-16 text-foot"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "material-icons-outlined f16"
+  }, " keyboard_arrow_right"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "ph-8 f16"
+  }, " Terms of Services")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "/",
+    className: "flex items-center mb-16 text-foot"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "material-icons-outlined f16"
+  }, " keyboard_arrow_right"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "ph-8 f16"
+  }, " Privacy Policy")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "grd-col-md-3 ph-12",
     id: "newslatter"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -56967,7 +57031,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Routes_CompDetail_index__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Routes/CompDetail/index */ "./src/components/Routes/CompDetail/index.js");
 /* harmony import */ var _Constant__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Constant */ "./src/components/Constant.js");
 /* harmony import */ var _Routes_BlogDetail__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Routes/BlogDetail */ "./src/components/Routes/BlogDetail/index.js");
+/* harmony import */ var _Routes_Contact__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Routes/Contact */ "./src/components/Routes/Contact/index.js");
 /* eslint-disable*/
+
 
 
 
@@ -57011,6 +57077,9 @@ var getComponent = function getComponent(props) {
 
     case _Constant__WEBPACK_IMPORTED_MODULE_9__["pageTypes"].COMPONENT_DETAIL:
       return /*#__PURE__*/React.createElement(_Routes_CompDetail_index__WEBPACK_IMPORTED_MODULE_8__["default"], props);
+
+    case _Constant__WEBPACK_IMPORTED_MODULE_9__["pageTypes"].CONTACT:
+      return /*#__PURE__*/React.createElement(_Routes_Contact__WEBPACK_IMPORTED_MODULE_11__["default"], props);
 
     default:
       return /*#__PURE__*/React.createElement(_Routes_Home_Index__WEBPACK_IMPORTED_MODULE_0__["default"], props);
@@ -57126,12 +57195,23 @@ var Aboutus = function Aboutus() {
     className: "grd-col-6 pa-12"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
     className: "aboutus-title ff-medium f30"
-  }, "Our Story"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+  }, "Our Story"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "aboutus-content lh-copy f16 "
-  }, "Start working with Landrick that can provide everything you need to generate awareness, drive traffic, connect. Dummy text is text that is used in the publishing industry or by web designers to occupy the space which will later be filled with content. This is required when, for example, the final text is not yet available. Dummy texts have been in use by typesetters since the 16th century."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "ff-bold brand"
+  }, "The uiSolution"), " is one of the best platform for the web application ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "ff-bold primary"
+  }, "\u2018UI developers or Client side developers\u2019"), ". We help you to provide the variety of solutions related to UI/UX ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "ff-bold"
+  }, "(React, ES6, Javascript, Vue js, Angular js, Webapck, HTML, CSS, SCSS...etc...)"), ". So that every developer use the code in your application according to your project requirement, Our Goal is to collect all the best and amazing content, examples and scripts all over the world."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "pv-16"
+  }, "Please note that all the resources are gathered by users and public sources on the internet.  If resources have violated your copyright, please through feedback to us so that we can delete a timely manner to protect you! All the Resources are free for non-commercial use. For commercial use please contact the Original Author."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "If you have any questions and advices, please use ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "/contact",
+    className: "ff-medium bb b--brand"
+  }, "Contact Us"), " page to email us and we will get back to you within 24 hours.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "pt-30"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "/#",
+    href: "/",
     className: "button button--brand ttc ff-medium f15 h-auto pv-12 ph-16 wt-10 mid"
   }, "Know More", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
     xmlns: "http://www.w3.org/2000/svg",
@@ -58509,7 +58589,10 @@ var BlogDetail = function BlogDetail(props) {
     createdBy: blog.createdBy,
     title: blog.title
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "ui-container pv-40"
+    className: "ui-container pv-40",
+    style: {
+      maxWidth: 1300
+    }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "grd-row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -58556,13 +58639,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _BlogDetail_BlogCategory__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../BlogDetail/BlogCategory */ "./src/components/Routes/BlogDetail/BlogCategory.js");
 /* harmony import */ var _BlogDetail_TagCloud__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../BlogDetail/TagCloud */ "./src/components/Routes/BlogDetail/TagCloud.js");
 /* harmony import */ var _BlogDetail_Follow__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../BlogDetail/Follow */ "./src/components/Routes/BlogDetail/Follow.js");
-/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../api */ "./api.js");
 
 
 
 
-
-
+ //import API from '../../../../api';
 
 var CompDetail = function CompDetail(props) {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(0),
@@ -58595,11 +58676,7 @@ var CompDetail = function CompDetail(props) {
     className: "grd-col-8 comp-detail-row__code bl br b--light-gray pa-12"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "comp-detail-code pa-12"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-    className: "mainborad"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-    src: "".concat(_api__WEBPACK_IMPORTED_MODULE_5__["default"].URL, "/images/add.png")
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h1", null, activeTabData.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h1", null, activeTabData.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "main-code-area lh-copy f16"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     dangerouslySetInnerHTML: {
@@ -58607,11 +58684,7 @@ var CompDetail = function CompDetail(props) {
     }
   })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "grd-col-2 comp-detail-row__add ph-12 pv-24"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-    className: "mainBoard-vert"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-    src: "".concat(_api__WEBPACK_IMPORTED_MODULE_5__["default"].URL, "/images/v-add.png")
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_BlogDetail_BlogCategory__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_BlogDetail_TagCloud__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_BlogDetail_BlogCategory__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_BlogDetail_TagCloud__WEBPACK_IMPORTED_MODULE_3__["default"], {
     tags: tags
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_BlogDetail_Follow__WEBPACK_IMPORTED_MODULE_4__["default"], null))));
 };
@@ -58781,6 +58854,218 @@ var Comp = function Comp(props) {
 
 /***/ }),
 
+/***/ "./src/components/Routes/Contact/ContactBanner.js":
+/*!********************************************************!*\
+  !*** ./src/components/Routes/Contact/ContactBanner.js ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var ContactBanner = function ContactBanner() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "blog-banner bt b--light-gray pv-30 bg-near-white"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "ui-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "grd-row"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "grd-col-12"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "banner--title f24 lh-copy mb-4 ff-bold tc"
+  }, "Contact us"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "/",
+    className: "bredcrum f14 brand ff-medium db tc"
+  }, "Back to Home")))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ContactBanner);
+
+/***/ }),
+
+/***/ "./src/components/Routes/Contact/index.js":
+/*!************************************************!*\
+  !*** ./src/components/Routes/Contact/index.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_hook_form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-hook-form */ "./node_modules/react-hook-form/dist/index.esm.js");
+/* harmony import */ var _Context_NotificationContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../Context/NotificationContext */ "./src/Context/NotificationContext.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../api */ "./api.js");
+/* harmony import */ var _ContactBanner__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ContactBanner */ "./src/components/Routes/Contact/ContactBanner.js");
+
+/* eslint-disable */
+
+
+
+
+
+
+
+var Contact = function Contact(props) {
+  var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_Context_NotificationContext__WEBPACK_IMPORTED_MODULE_2__["default"]),
+      showAlert = _useContext.showAlert;
+
+  var _useForm = Object(react_hook_form__WEBPACK_IMPORTED_MODULE_1__["useForm"])(),
+      handleSubmit = _useForm.handleSubmit,
+      register = _useForm.register,
+      errors = _useForm.errors;
+
+  var onSubmit = function onSubmit(data) {
+    axios__WEBPACK_IMPORTED_MODULE_3___default.a.post("".concat(_api__WEBPACK_IMPORTED_MODULE_4__["default"].URL, "/contact"), data).then(function (response) {
+      if (response.data.status === 200) {
+        showAlert("success tp-20 tc", response.data.message);
+      }
+    });
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "blog-content"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ContactBanner__WEBPACK_IMPORTED_MODULE_5__["default"], props), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "contact-form pa-50"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "lh-copy"
+  }, "If you have any questions and advices, please use Contact Us page to email us and we will get back to you within 24 hours"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: handleSubmit(onSubmit),
+    className: "db mt-20"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "grd-row grd-row-pa-none"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "grd-col-6 pa-12"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "auth-form-row"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "auth-form-label ff-bold primary f14 mb-8 db"
+  }, "Name", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "form-mand red"
+  }, "*")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group input-group--lg"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "24",
+    height: "24",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "2",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    className: "auth-form-icon"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+    d: "M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("circle", {
+    cx: "12",
+    cy: "7",
+    r: "4"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    className: "form-control",
+    placeholder: "Name",
+    name: "name",
+    ref: register({
+      required: "Name is Required"
+    })
+  })), errors.name && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "f12 red ff-medium pt-8"
+  }, errors.name.message))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "grd-col-6 pa-12"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "auth-form-row"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "auth-form-label ff-bold primary f14 mb-8 db"
+  }, "Email", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "form-mand red"
+  }, "*")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group input-group--lg"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "24",
+    height: "24",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "2",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    className: "auth-form-icon"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+    d: "M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("polyline", {
+    points: "22,6 12,13 2,6"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    className: "form-control",
+    placeholder: "Email",
+    name: "email",
+    ref: register({
+      required: "Email is Required",
+      pattern: {
+        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+        message: "Invalid Email"
+      }
+    })
+  })), errors.email && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "f12 red ff-medium pt-8"
+  }, errors.email.message)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "grd-row grd-row-pa-none"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "grd-col-12 pa-12"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "auth-form-row"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "auth-form-label ff-bold primary f14 mb-8 db"
+  }, "Message", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "form-mand red"
+  }, "*")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group input-group--lg"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "24",
+    height: "24",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "2",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    className: "auth-form-icon"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+    d: "M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+    type: "text",
+    className: "form-control",
+    rows: "6",
+    name: "message",
+    placeholder: "Message",
+    ref: register({
+      required: "Message is Required"
+    })
+  })), errors.message && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "f12 red ff-medium pt-8"
+  }, errors.message.message)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "grd-row pa-12 grd-row-pa-none"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "submit",
+    className: "button button--brand db wt--100 tc f16 ff-medium pv-10 h-auto"
+  }, "Send")))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Contact);
+
+/***/ }),
+
 /***/ "./src/components/Routes/Home/Banner.js":
 /*!**********************************************!*\
   !*** ./src/components/Routes/Home/Banner.js ***!
@@ -58867,7 +59152,7 @@ var blogListing = function blogListing(props) {
       href: "/blog/".concat(blog._id),
       className: "blog-card-img br10 overflow-hidden"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-      className: "db"
+      className: "dn"
     }, "blog"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
       src: "".concat(_api__WEBPACK_IMPORTED_MODULE_1__["default"].URL, "/uploads/").concat(blog.thumbImage)
     })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

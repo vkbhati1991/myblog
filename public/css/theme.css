@@ -2585,6 +2585,27 @@ img {
   display: block;
   margin: 0 auto; }
 
+/* line 194, SCSS/components/partials/custom/_index.scss */
+.contact-form {
+  max-width: 700px;
+  margin: 0 auto; }
+
+/* line 200, SCSS/components/partials/custom/_index.scss */
+.blogLeft ul, .blogLeft li, .blogLeft ol, .blogLeft *, .main-code-area ul, .main-code-area li, .main-code-area ol, .main-code-area * {
+  list-style: inherit;
+  margin: revert;
+  padding: revert; }
+
+/* line 207, SCSS/components/partials/custom/_index.scss */
+.language-javascript, .language-html, .language-css, code {
+  padding: 20px;
+  display: block;
+  margin: 0;
+  /* padding: 0; */
+  background: #e9ecef;
+  border-radius: 10px;
+  font-weight: 600; }
+
 /* line 1, SCSS/components/partials/footer/_index.scss */
 footer {
   background-color: #202942;

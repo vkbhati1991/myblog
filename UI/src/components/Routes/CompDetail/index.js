@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import BlogCategory from '../BlogDetail/BlogCategory';
 import TagCloud from '../BlogDetail/TagCloud';
 import Follow from '../BlogDetail/Follow';
-import API from '../../../../api';
+//import API from '../../../../api';
 
 const CompDetail = (props) => {
 
@@ -27,9 +27,9 @@ const CompDetail = (props) => {
         <div className="grd-col-2 comp-detail-row__side-nav pb-40 ">{compDetailLeft(props, activeTab, setActiveTab)}</div>
         <div className="grd-col-8 comp-detail-row__code bl br b--light-gray pa-12">
           <div className="comp-detail-code pa-12">
-            <div className="mainborad">
+            {/* <div className="mainborad">
               <img src={`${API.URL}/images/add.png`} />
-            </div>
+            </div> */}
             <h1>{activeTabData.title}</h1>
             <div className="main-code-area lh-copy f16">
               <div dangerouslySetInnerHTML={{ __html: activeTabData.content }} />
@@ -37,7 +37,7 @@ const CompDetail = (props) => {
           </div>
         </div>
         <div className="grd-col-2 comp-detail-row__add ph-12 pv-24">
-          <div className="mainBoard-vert"><img src={`${API.URL}/images/v-add.png`} /></div>
+          {/* <div className="mainBoard-vert"><img src={`${API.URL}/images/v-add.png`} /></div> */}
           <BlogCategory />
           <TagCloud tags={tags}/>
           <Follow />

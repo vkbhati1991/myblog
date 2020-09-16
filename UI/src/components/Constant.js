@@ -8,5 +8,6 @@ export const pageTypes = {
     REGISTER: 7,
     COMPONENT: 8,
     COMPONENT_DETAIL: 9,
-    BLOG_DETAIL: 10
+    BLOG_DETAIL: 10,
+    CONTACT: 11
 };

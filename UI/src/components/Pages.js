@@ -10,6 +10,7 @@ import Comp from "./Routes/Component/index";
 import CompDetail from './Routes/CompDetail/index';
 import { pageTypes } from './Constant';
 import BlogDetail from './Routes/BlogDetail';
+import Contact from './Routes/Contact';
 
 const getComponent = (props) => {
     switch (props.pageType) {
@@ -33,6 +34,8 @@ const getComponent = (props) => {
             return <Comp {...props} />;
         case pageTypes.COMPONENT_DETAIL:
             return <CompDetail {...props} />;
+            case pageTypes.CONTACT:
+            return <Contact {...props} />;
         default:
             return <Home {...props} />;
     }
